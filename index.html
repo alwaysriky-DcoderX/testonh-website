@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomor Pembayaran Saya</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #4fc3f7;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+        }
+
+        .payment-method {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .payment-method h2 {
+            margin-top: 0;
+            color: #81c784;
+        }
+
+        .payment-number {
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        .qr-container {
+            margin: 30px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 14px;
+            border: 2px dashed #ccc;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .copy-btn {
+            background-color: #4fc3f7;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #3da8d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PAYMENT DE4YOU YT</h1>
+        
+        <div class="payment-method">
+            <h2>DANA</h2>
+            <div class="payment-number" id="dana-number">087778002663</div>
+            <button class="copy-btn" onclick="copyToClipboard('dana-number')">Salin</button>
+        </div>
+        
+        <div class="payment-method">
+            <h2>GoPay</h2>
+            <div class="payment-number" id="gopay-number">087778002663</div>
+            <button class="copy-btn" onclick="copyToClipboard('gopay-number')">Salin</button>
+        </div>
+        
+        <div class="qr-container">
+            <h2>QR Code Pembayaran</h2>
+            <div class="qr-placeholder">
+                [https://files.catbox.moe/n95pvv.jpg]
+            </div>
+            <p>Scan QR code di atas untuk pembayaran</p>
+        </div>
+        
+        <footer>
+            Terima kasih atas pembayarannya!
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor berhasil disalin: ' + text);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
